@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<RuleEngine>
+  <Rules>
+    <Rule id="Rule1" desc="" chainable="true" priority="1">
+      <Condition><![CDATA[ PaymentFor == "physical product" ]]></Condition>
+      <Actions>
+        <Evaluate factId="Task"><![CDATA["Generate packaging slip"]]></Evaluate>
+      </Actions>
+    </Rule>
+    <Rule id="Rule2" desc="" chainable="true" priority="2">
+      <Condition><![CDATA[ PaymentFor == "book" ]]></Condition>
+      <Actions>
+        <Evaluate factId="Task"><![CDATA["Create a duplicate packaging slip for the royalty department"]]></Evaluate>
+      </Actions>
+    </Rule>
+    <Rule id="Rule3" desc="" chainable="true" priority="3">
+      <Condition><![CDATA[ PaymentFor == "membership" ]]></Condition>
+      <Actions>
+        <Evaluate factId="Task"><![CDATA["Activate membership"]]></Evaluate>
+      </Actions>
+    </Rule>
+    <Rule id="Rule4" desc="" chainable="true" priority="4">
+      <Condition><![CDATA[ PaymentFor == "upgrade membership" ]]></Condition>
+      <Actions>
+        <Evaluate factId="Task"><![CDATA["Apply the upgrade"]]></Evaluate>
+      </Actions>
+    </Rule>
+    <Rule id="Rule5" desc="" chainable="true" priority="5">
+      <Condition><![CDATA[ PaymentFor == "video" ]]></Condition>
+      <Actions>
+        <Evaluate factId="Task"><![CDATA["Add free first aid video to packaging slip"]]></Evaluate>
+      </Actions>
+    </Rule>
+    <Rule id="Rule6" desc="" chainable="true" priority="6">
+      <Condition><![CDATA[ PaymentFor == "membership or upgrade" ]]></Condition>
+      <Actions>
+        <Evaluate factId="Task"><![CDATA["e-mail the owner and inform them of the  Activation/upgrade"]]></Evaluate>
+      </Actions>
+    </Rule>
+    <Rule id="Rule7" desc="" chainable="true" priority="7">
+      <Condition><![CDATA[ PaymentFor == "physical product or book" ]]></Condition>
+      <Actions>
+        <Evaluate factId="Task"><![CDATA["Generate commision payment to agent"]]></Evaluate>
+      </Actions>
+    </Rule>
+  </Rules>
+
+  <Facts>
+    <Fact id="PaymentFor" desc="PaymentFor" type="String" modelId="Payment">
+      <xpath><![CDATA[ Payment/PaymentFor]]></xpath>
+    </Fact>
+    <Fact id="Task" desc="Task" type="String" modelId="Payment">
+      <xpath><![CDATA[ Payment/Task]]></xpath>
+    </Fact>
+  </Facts>
+</RuleEngine>
